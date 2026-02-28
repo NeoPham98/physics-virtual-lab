@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/physics/new?moduleId=1&ignoreBlock=true',
+                permanent: false,
+            },
+        ];
+    },
     async rewrites() {
         return [
             // /console and /console/* → physics virtuallab SPA
