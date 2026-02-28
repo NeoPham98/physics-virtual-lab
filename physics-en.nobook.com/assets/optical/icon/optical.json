@@ -1,0 +1,285 @@
+{
+  "frames": {
+    "ParallelLightSource.png 实例 1": {
+      "frame": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "PointLightSource.png 实例 1": {
+      "frame": { "x": 80, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "bicyclelamp.png 实例 1": {
+      "frame": { "x": 160, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "circuit7.png 实例 1": {
+      "frame": { "x": 240, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "cistern.png 实例 1": {
+      "frame": { "x": 321, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "colorPalette.png 实例 1": {
+      "frame": { "x": 402, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "coloredGlassSheet.png 实例 1": {
+      "frame": { "x": 483, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "concaveGlass.png 实例 1": {
+      "frame": { "x": 563, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "concaveMirror.png 实例 1": {
+      "frame": { "x": 644, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "convexGlass.png 实例 1": {
+      "frame": { "x": 725, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "convexMirror.png 实例 1": {
+      "frame": { "x": 805, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "diffusemirror.png 实例 1": {
+      "frame": { "x": 885, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "equalThicknessInterference.png 实例 1": {
+      "frame": { "x": 0, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "foldPaperboard.png 实例 1": {
+      "frame": { "x": 80, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "fraunhoferDiffraction.png 实例 1": {
+      "frame": { "x": 160, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "fresnelDiffraction.png 实例 1": {
+      "frame": { "x": 240, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "glassBlock.png 实例 1": {
+      "frame": { "x": 320, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "gleenRayPen.png 实例 1": {
+      "frame": { "x": 401, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "halfRoundGlass.png 实例 1": {
+      "frame": { "x": 482, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "jiguangyanshi.png 实例 1": {
+      "frame": { "x": 563, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "kuaizi.png 实例 1": {
+      "frame": { "x": 644, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "lightIntensityMeter.png 实例 1": {
+      "frame": { "x": 725, "y": 81, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "opticalBench.png 实例 1": {
+      "frame": { "x": 806, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "opticalFiber.png 实例 1": {
+      "frame": { "x": 886, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "opticalThermometer.png 实例 1": {
+      "frame": { "x": 0, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "periscope.png 实例 1": {
+      "frame": { "x": 80, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "planeMirror.png 实例 1": {
+      "frame": { "x": 160, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "planeMirrorImaging.png 实例 1": {
+      "frame": { "x": 240, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "plateWithHole.png 实例 1": {
+      "frame": { "x": 320, "y": 162, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "polaroid.png 实例 1": {
+      "frame": { "x": 400, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "redRayPen.png 实例 1": {
+      "frame": { "x": 481, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "righttriplePrism.png 实例 1": {
+      "frame": { "x": 562, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "rule.png 实例 1": {
+      "frame": { "x": 643, "y": 162, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ruler.png 实例 1": {
+      "frame": { "x": 724, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "screen.png 实例 1": {
+      "frame": { "x": 805, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "shuangfgs.png 实例 1": {
+      "frame": { "x": 885, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "triplePrism.png 实例 1": {
+      "frame": { "x": 0, "y": 243, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "waterOpticalFiber.png 实例 1": {
+      "frame": { "x": 80, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "whiterayPen.png 实例 1": {
+      "frame": { "x": 161, "y": 243, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    }
+  },
+  "meta": {
+    "app": "Adobe Animate",
+    "version": "22.0.5.191",
+    "image": "optical.png",
+    "format": "RGBA8888",
+    "size": { "w": 1024, "h": 512 },
+    "scale": "1"
+  }
+}

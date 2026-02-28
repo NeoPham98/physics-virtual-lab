@@ -1,0 +1,747 @@
+{
+  "frames": {
+    "AluminumRing.png instance 1": {
+      "frame": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "AluminumRing.png 复制 instance 1": {
+      "frame": { "x": 80, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "Bunsen.png instance 1": {
+      "frame": { "x": 160, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "Capacitance.png instance 1": {
+      "frame": { "x": 240, "y": 0, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "CeramicRod.png instance 1": {
+      "frame": { "x": 321, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "DeskLamp.png instance 1": {
+      "frame": { "x": 401, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "DriedWoodenStick.png instance 1": {
+      "frame": { "x": 481, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecAnd.png instance 1": {
+      "frame": { "x": 561, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecBuzzer.png instance 1": {
+      "frame": { "x": 641, "y": 0, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecEnergy4.png instance 1": {
+      "frame": { "x": 722, "y": 0, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecGround.png instance 1": {
+      "frame": { "x": 803, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecMotors.png instance 1": {
+      "frame": { "x": 883, "y": 0, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecNo.png instance 1": {
+      "frame": { "x": 0, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecOr.png instance 1": {
+      "frame": { "x": 80, "y": 81, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "ElecPost.png instance 1": {
+      "frame": { "x": 161, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecResFlask.png instance 1": {
+      "frame": { "x": 241, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecResistanceBox.png instance 1": {
+      "frame": { "x": 321, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecTwo.png instance 1": {
+      "frame": { "x": 401, "y": 81, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "ElecTwoL.png instance 1": {
+      "frame": { "x": 482, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "Filament.png instance 1": {
+      "frame": { "x": 563, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ForWire.png instance 1": {
+      "frame": { "x": 643, "y": 81, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "FruitBattery.png instance 1": {
+      "frame": { "x": 724, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "MagnetLongTube.png instance 1": {
+      "frame": { "x": 804, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "MagneticDial.png instance 1": {
+      "frame": { "x": 884, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "Match.png instance 1": {
+      "frame": { "x": 0, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "OilGauge.png instance 1": {
+      "frame": { "x": 80, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "PencilLead.png instance 1": {
+      "frame": { "x": 160, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "PhotoelectricResistor.png instance 1": {
+      "frame": { "x": 240, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "PlasticRod.png instance 1": {
+      "frame": { "x": 320, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ReedSwitch.png instance 1": {
+      "frame": { "x": 400, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "SensorCurrent.png instance 1": {
+      "frame": { "x": 480, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "SensorMagnetic.png instance 1": {
+      "frame": { "x": 560, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "SensorVoltage.png instance 1": {
+      "frame": { "x": 640, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "Thermistor.png instance 1": {
+      "frame": { "x": 720, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "WetWoodenStick.png instance 1": {
+      "frame": { "x": 481, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ammeter.png instance 1": {
+      "frame": { "x": 800, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ammeter.png instance 2": {
+      "frame": { "x": 800, "y": 162, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "astElecComp.png instance 1": {
+      "frame": { "x": 880, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "battery_holder.png instance 1": {
+      "frame": { "x": 0, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "bimayou.png instance 1": {
+      "frame": { "x": 81, "y": 243, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "conductivepaper.png instance 1": {
+      "frame": { "x": 161, "y": 243, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "conductorwithinsulatingpillarandmetalfoil.png instance 1": {
+      "frame": { "x": 241, "y": 243, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "coulombbalance.png instance 1": {
+      "frame": { "x": 321, "y": 243, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "dry_cell.png instance 1": {
+      "frame": { "x": 401, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "elecBell.png instance 1": {
+      "frame": { "x": 482, "y": 243, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "elec_lamp_and_holder.png instance 1": {
+      "frame": { "x": 563, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "elec_lamp_and_holder2.png instance 1": {
+      "frame": { "x": 644, "y": 243, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "electrimotorelectri.png instance 1": {
+      "frame": { "x": 724, "y": 243, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "electrolyte.png instance 1": {
+      "frame": { "x": 805, "y": 243, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "electromagneticRelay.png instance 1": {
+      "frame": { "x": 886, "y": 243, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "electromagneticmode.png instance 1": {
+      "frame": { "x": 0, "y": 324, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "electrostaticShield.png instance 1": {
+      "frame": { "x": 81, "y": 324, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "fuses.png instance 1": {
+      "frame": { "x": 162, "y": 324, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "glassrob.png instance 1": {
+      "frame": { "x": 242, "y": 324, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "handgenerator.png instance 1": {
+      "frame": { "x": 322, "y": 324, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "inland_ampere_meter.png instance 1": {
+      "frame": { "x": 402, "y": 324, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "inland_voltmeter.png instance 1": {
+      "frame": { "x": 483, "y": 324, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "insulatingframe.png instance 1": {
+      "frame": { "x": 564, "y": 324, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ironNail.png instance 1": {
+      "frame": { "x": 644, "y": 324, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "jingdianji.png instance 1": {
+      "frame": { "x": 724, "y": 324, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "jouleLaw.png instance 1": {
+      "frame": { "x": 804, "y": 324, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "lorentzforce.png instance 1": {
+      "frame": { "x": 884, "y": 324, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "lxguancgx.png instance 1": {
+      "frame": { "x": 0, "y": 405, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "magnetbar.png instance 1": {
+      "frame": { "x": 80, "y": 405, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "magnethorseshoe.png instance 1": {
+      "frame": { "x": 160, "y": 405, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "magnetneedle.png instance 1": {
+      "frame": { "x": 241, "y": 405, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "magnetwithguiderail.png instance 1": {
+      "frame": { "x": 322, "y": 405, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "metalBarWithHand.png instance 1": {
+      "frame": { "x": 403, "y": 405, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "metallicWire.png instance 1": {
+      "frame": { "x": 484, "y": 405, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "multimeter.png instance 1": {
+      "frame": { "x": 565, "y": 405, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "nails100.png instance 1": {
+      "frame": { "x": 645, "y": 405, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "nails50.png instance 1": {
+      "frame": { "x": 725, "y": 405, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "negativeobject.png instance 1": {
+      "frame": { "x": 806, "y": 405, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "oscilloscope.png instance 1": {
+      "frame": { "x": 886, "y": 405, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "paperclip.png instance 1": {
+      "frame": { "x": 0, "y": 486, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "parallelplatecondense.png instance 1": {
+      "frame": { "x": 80, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "pin.png instance 1": {
+      "frame": { "x": 161, "y": 486, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "pointerMultimeter.png instance 1": {
+      "frame": { "x": 242, "y": 486, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "positiveobject.png instance 1": {
+      "frame": { "x": 322, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "potentiometer.png instance 1": {
+      "frame": { "x": 403, "y": 486, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "power.png instance 1": {
+      "frame": { "x": 483, "y": 486, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "qidianji.png instance 1": {
+      "frame": { "x": 563, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "rectcoidelectri.png instance 1": {
+      "frame": { "x": 644, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "resistance.png instance 1": {
+      "frame": { "x": 725, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "rotatingSupport.png instance 1": {
+      "frame": { "x": 806, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "rubberrod.png instance 1": {
+      "frame": { "x": 887, "y": 486, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "sensitivitygalvanometer.png instance 1": {
+      "frame": { "x": 0, "y": 567, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "signalGenerator.png instance 1": {
+      "frame": { "x": 81, "y": 567, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "simplecoilelectri.png instance 1": {
+      "frame": { "x": 161, "y": 567, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "solenoidalwinding.png instance 1": {
+      "frame": { "x": 241, "y": 567, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "solenoidelectri.png instance 1": {
+      "frame": { "x": 321, "y": 567, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "spacedcoil.png instance 1": {
+      "frame": { "x": 401, "y": 567, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "spdt_switch.png instance 1": {
+      "frame": { "x": 481, "y": 567, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "stent.png instance 1": {
+      "frame": { "x": 562, "y": 567, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "storageBattery.png instance 1": {
+      "frame": { "x": 643, "y": 567, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "supporthavemagnet.png instance 1": {
+      "frame": { "x": 724, "y": 567, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "supporthavemagnets.png instance 1": {
+      "frame": { "x": 805, "y": 567, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "switch.png instance 1": {
+      "frame": { "x": 886, "y": 567, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "twopoles.png instance 1": {
+      "frame": { "x": 0, "y": 648, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "v9battery.png instance 1": {
+      "frame": { "x": 81, "y": 648, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "variableelectransformator.png instance 1": {
+      "frame": { "x": 162, "y": 648, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "wire.png instance 1": {
+      "frame": { "x": 242, "y": 648, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "wireretainingclip.png instance 1": {
+      "frame": { "x": 322, "y": 648, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "yandianqi.png instance 1": {
+      "frame": { "x": 402, "y": 648, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "zhixie.png instance 1": {
+      "frame": { "x": 482, "y": 648, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    }
+  },
+  "meta": {
+    "app": "Adobe Animate",
+    "version": "24.0.0.305",
+    "image": "electrical.png",
+    "format": "RGBA8888",
+    "size": { "w": 1024, "h": 1024 },
+    "scale": "1"
+  }
+}

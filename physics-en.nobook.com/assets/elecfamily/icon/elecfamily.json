@@ -1,0 +1,152 @@
+{
+  "frames": {
+    "Com_TimerNew.png 实例 1": {
+      "frame": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyAir.png 实例 1": {
+      "frame": { "x": 80, "y": 0, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecFamilyCooker.png 实例 1": {
+      "frame": { "x": 161, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecFamilyFan.png 实例 1": {
+      "frame": { "x": 241, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecFamilyFridge.png 实例 1": {
+      "frame": { "x": 321, "y": 0, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecFamilyHeater.png 实例 1": {
+      "frame": { "x": 401, "y": 0, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecFamilyInserted.png 实例 1": {
+      "frame": { "x": 0, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecFamilyKettle.png 实例 1": {
+      "frame": { "x": 81, "y": 81, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecFamilyLight.png 实例 1": {
+      "frame": { "x": 162, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecFamilyLightHolder.png 实例 1": {
+      "frame": { "x": 242, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyPencil.png 实例 1": {
+      "frame": { "x": 322, "y": 81, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyScissors.png 实例 1": {
+      "frame": { "x": 402, "y": 81, "w": 80, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 80 },
+      "sourceSize": { "w": 80, "h": 80 }
+    },
+    "ElecFamilyStove.png 实例 1": {
+      "frame": { "x": 0, "y": 162, "w": 82, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 82, "h": 81 },
+      "sourceSize": { "w": 82, "h": 81 }
+    },
+    "ElecFamilySwitchA.png 实例 1": {
+      "frame": { "x": 82, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "ElecFamilySwitchB.png 实例 1": {
+      "frame": { "x": 163, "y": 162, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyThreeHoleOutlets.png 实例 1": {
+      "frame": { "x": 243, "y": 162, "w": 81, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 81 },
+      "sourceSize": { "w": 81, "h": 81 }
+    },
+    "ElecFamilyTv.png 实例 1": {
+      "frame": { "x": 324, "y": 162, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyTwoHoleOutlets.png 实例 1": {
+      "frame": { "x": 404, "y": 162, "w": 80, "h": 81 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 80, "h": 81 },
+      "sourceSize": { "w": 80, "h": 81 }
+    },
+    "ElecFamilyWash.png 实例 1": {
+      "frame": { "x": 0, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    },
+    "ElecFamilyWave.png 实例 1": {
+      "frame": { "x": 81, "y": 243, "w": 81, "h": 80 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 81, "h": 80 },
+      "sourceSize": { "w": 81, "h": 80 }
+    }
+  },
+  "meta": {
+    "app": "Adobe Animate",
+    "version": "22.0.5.191",
+    "image": "elecfamily.png",
+    "format": "RGBA8888",
+    "size": { "w": 512, "h": 512 },
+    "scale": "1"
+  }
+}

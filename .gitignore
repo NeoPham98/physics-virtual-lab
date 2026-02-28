@@ -1,0 +1,17 @@
+# Node
+node_modules/
+.next/
+npm-debug.log*
+
+# Env
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
