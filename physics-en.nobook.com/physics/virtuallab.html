@@ -3,6 +3,16 @@
 
 <head>
   <base href="/" />
+  <!-- Suppress verbose console output from app bundles -->
+  <script>
+    (function () {
+      var noop = function () { };
+      console.log = noop;
+      console.warn = noop;
+      console.info = noop;
+      console.debug = noop;
+    })();
+  </script>
 
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />

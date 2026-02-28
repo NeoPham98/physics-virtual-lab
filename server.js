@@ -69,12 +69,10 @@ function fetchAndCache(urlPath) {
                 const data = Buffer.concat(chunks);
                 fs.mkdirSync(path.dirname(localPath), { recursive: true });
                 fs.writeFileSync(localPath, data);
-                console.log(`[PROXY+CACHE] ${urlPath} (${data.length} bytes)`);
                 resolve({ data, contentType: res.headers['content-type'] || 'application/octet-stream' });
             });
         });
         req.on('error', (e) => {
-            console.log(`[PROXY FAIL] ${urlPath}: ${e.message}`);
             resolve(null);
         });
         req.on('timeout', () => { req.destroy(); resolve(null); });
@@ -270,10 +268,6 @@ app.prepare().then(() => {
 
     }).listen(PORT, (err) => {
         if (err) throw err;
-        console.log(`\n🚀 Physics Virtual Lab (Next.js) running at http://localhost:${PORT}`);
-        console.log(`📂 Serving: ${SERVE_DIR}`);
-        console.log(`\n🔗 Open: http://localhost:${PORT}/physics/virtuallab.html`);
-        console.log('Press Ctrl+C to stop.\n');
 
         // Open browser after 1.5s
         setTimeout(() => {
@@ -282,5 +276,17 @@ app.prepare().then(() => {
                 process.platform === 'darwin' ? `open "${url}"` : `xdg-open "${url}"`;
             require('child_process').exec(cmd);
         }, 1500);
+    }).on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+            // Port busy → kill old process and retry after 1s
+            require('child_process').exec(
+                process.platform === 'win32'
+                    ? `for /f "tokens=5" %a in ('netstat -aon ^| findstr :${PORT}') do taskkill /F /PID %a`
+                    : `lsof -ti:${PORT} | xargs kill -9`,
+                () => { setTimeout(() => process.exit(0), 500); }
+            );
+        } else {
+            throw err;
+        }
     });
 });
