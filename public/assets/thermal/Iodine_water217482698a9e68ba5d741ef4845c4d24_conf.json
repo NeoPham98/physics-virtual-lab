@@ -1,0 +1,75 @@
+{
+  "type": "sprite",
+  "x": 0,
+  "y": 0,
+  "name": "compnent",
+  "0": {
+    "x": -133.5,
+    "y": -114.55,
+    "name": "top",
+    "type": "sprite",
+    "r": 0,
+    "sx": 1,
+    "sy": 1,
+    "a": 1,
+    "skewX": 0,
+    "skewY": 0,
+    "0": {
+      "x": 61.2,
+      "y": 16.15,
+      "name": "wu",
+      "type": "sprite",
+      "r": 0,
+      "sx": 1,
+      "sy": 1,
+      "a": 1,
+      "skewX": 0,
+      "skewY": 0,
+      "0": {
+        "type": "bitmap",
+        "libName": "Bitmap 1",
+        "x": 0,
+        "y": 0,
+        "r": 0,
+        "sx": 1.428558349609375,
+        "sy": 0.7843017578125,
+        "skewX": 0,
+        "skewY": 0
+      }
+    },
+    "1": {
+      "type": "bitmap",
+      "libName": "Bitmap 2",
+      "x": 0,
+      "y": 0,
+      "r": 0,
+      "sx": 1.6666412353515625,
+      "sy": 1.6666412353515625,
+      "skewX": 0,
+      "skewY": 0
+    }
+  },
+  "1": {
+    "x": 0,
+    "y": 0,
+    "name": "bg",
+    "type": "sprite",
+    "r": 0,
+    "sx": 1,
+    "sy": 1,
+    "a": 1,
+    "skewX": 0,
+    "skewY": 0,
+    "0": {
+      "type": "bitmap",
+      "libName": "烧杯.png copy 2",
+      "x": -81,
+      "y": -97,
+      "r": 0,
+      "sx": 0.41522216796875,
+      "sy": 0.457794189453125,
+      "skewX": 0,
+      "skewY": 0
+    }
+  }
+}
