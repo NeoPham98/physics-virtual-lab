@@ -1,5 +1,5 @@
 /**
- * NB Sync Bridge v12.1-PHY — SMART HYBRID + STANDALONE (WebRTC + BroadcastChannel)
+ * NB Sync Bridge v12.3-PHY — SMART HYBRID + STANDALONE (WebRTC + BroadcastChannel)
  * Adapted for Physics Virtual Lab
  * 
  * Modes:
@@ -13,7 +13,7 @@
   if (window.__nbSyncBridgeLoaded) return;
   window.__nbSyncBridgeLoaded = true;
 
-  var BRIDGE_VERSION = '12.1.0';
+  var BRIDGE_VERSION = '12.3.0';
   var MSG_PREFIX = 'NB_SYNC';
   var MAX_INIT_WAIT = 30000;
 
@@ -42,12 +42,14 @@
 
   // Standalone mode vars
   var _urlParams = new URLSearchParams(window.location.search);
+  var _transport = _urlParams.get('transport');
   var _syncRoom = _urlParams.get('syncRoom');
   var _syncRole = _urlParams.get('syncRole');
-  var _standaloneMode = !!_syncRoom;
+  var _standaloneMode = !!_syncRoom && _transport !== 'postmessage';
   var _bc = null;
   var _peer = null;
   var _peerConns = [];
+  var _positionSyncTimer = null;
 
   // ═══════════════════════════════════════════════════════
   // LOGGING
@@ -69,6 +71,7 @@
   // SEND TO PARENT (overridden in standalone mode)
   // ═══════════════════════════════════════════════════════
   var _sendToParentBase = function (action, payload) {
+    recordCommandHistory(action, payload);
     if (window.parent === window) return;
     try {
       window.parent.postMessage({
@@ -88,8 +91,13 @@
   // LAYER 1: CANVAS POINTER EVENTS
   // ═══════════════════════════════════════════════════════
   function startCanvasCapture() {
+    // Idempotent: tryInit() and the SET_ROLE presenter handler both call this; without a guard
+    // the presenter binds duplicate document-level pointer listeners → every CANVAS_EVENT (and
+    // its /ws relay) fires twice, causing jittery double-replay on viewers.
+    if (window.__nbCanvasCaptureStarted) return true;
     _canvasEl = document.querySelector('canvas');
     if (!_canvasEl) { log('No canvas found!'); return false; }
+    window.__nbCanvasCaptureStarted = true;
 
     var dragging = false;
     var canvasRect = null;
@@ -286,35 +294,10 @@
         log('⚡', cmdName);
         setTimeout(function () { sendPositionSync(); }, 100);
       }
-      // Relay one-shot interaction commands (non-whitelisted, fire ≤3x in 2s)
-      if (_isPresenter && !_isSyncing && !RELAY_COMMANDS[cmd] && cmd !== CMD_DELETE) {
-        if (!window.__cmdFreq) window.__cmdFreq = {};
-        if (!window.__cmdSkip) window.__cmdSkip = {};
-        var now = Date.now();
-        if (!window.__cmdSkip[cmd]) {
-          if (!window.__cmdFreq[cmd]) window.__cmdFreq[cmd] = [];
-          window.__cmdFreq[cmd].push(now);
-          window.__cmdFreq[cmd] = window.__cmdFreq[cmd].filter(function(t) { return now - t < 2000; });
-          if (window.__cmdFreq[cmd].length > 3) {
-            window.__cmdSkip[cmd] = true;
-            log('⏭ Skip tick:', cmd.substr(0, 8) + '...');
-          } else {
-            // Smart serialize with PIXI path refs
-            var smartArgs = [cmd];
-            for (var i = 1; i < args.length; i++) {
-              var a = args[i];
-              if (a && typeof a === 'object' && typeof a.x === 'number' && a.parent) {
-                var eqPath = findChildPath(cm, a);
-                smartArgs.push(eqPath ? { __pixiRef: true, path: eqPath } : null);
-              } else {
-                try { smartArgs.push(JSON.parse(JSON.stringify(a))); } catch(e3) { smartArgs.push(null); }
-              }
-            }
-            sendToParent('EXECUTE_CMD', { cmdName: cmd, args: smartArgs });
-            log('⚡🔥', cmd.substr(0, 8) + '...');
-          }
-        }
-      }
+      // [DISABLED v12.3] Relaying NON-whitelisted commands serialized plain-object args that the
+      // viewer's engine then treats as live PIXI display objects → "e.on is not a function" on
+      // replay (spammed the console + broke sync). Whitelisted commands (ADD/CREATE/DELETE) +
+      // DVA actions + periodic POSITION_SYNC reproduce scene state without this speculative path.
       return result;
     };
     log('✓ Layer 2: execute() hooked');
@@ -413,9 +396,15 @@
       }
       data.push(entry);
     }
-    log('📤 Sync:', debugStr);
+    if (window.__nbSyncDebug) log('📤 Sync:', debugStr);
+    // Only emit when the scene actually changed — avoids a constant 1s /ws heartbeat that
+    // floods every subscriber while the lab sits idle.
     if (data.length > 0) {
-      sendToParent('POSITION_SYNC', data);
+      var _posJson = JSON.stringify(data);
+      if (_posJson !== window.__nbLastPosSync) {
+        window.__nbLastPosSync = _posJson;
+        sendToParent('POSITION_SYNC', data);
+      }
     }
   }
 
@@ -431,7 +420,7 @@
       if (!node || typeof node.x !== 'number') continue;
       // Level 0: root child
       if (Math.abs(node.x - d.x) > 0.5 || Math.abs(node.y - d.y) > 0.5) {
-        log('📍 [' + d.i + ']: ' + Math.round(node.x) + ',' + Math.round(node.y) + ' → ' + Math.round(d.x) + ',' + Math.round(d.y));
+        if (window.__nbSyncDebug) log('📍 [' + d.i + ']: ' + Math.round(node.x) + ',' + Math.round(node.y) + ' → ' + Math.round(d.x) + ',' + Math.round(d.y));
       }
       node.x = d.x; node.y = d.y;
       if (node.scale && d.sx != null) { node.scale.x = d.sx; node.scale.y = d.sy; }
@@ -442,7 +431,7 @@
           var cn = node.children[cd.i];
           if (!cn || typeof cn.x !== 'number') continue;
           if (Math.abs(cn.x - cd.x) > 0.5 || Math.abs(cn.y - cd.y) > 0.5) {
-            log('📍 [' + d.i + '.' + cd.i + ']: ' + Math.round(cn.x) + ',' + Math.round(cn.y) + ' → ' + Math.round(cd.x) + ',' + Math.round(cd.y));
+            if (window.__nbSyncDebug) log('📍 [' + d.i + '.' + cd.i + ']: ' + Math.round(cn.x) + ',' + Math.round(cn.y) + ' → ' + Math.round(cd.x) + ',' + Math.round(cd.y));
           }
           cn.x = cd.x; cn.y = cd.y;
           if (cn.scale && cd.sx != null) { cn.scale.x = cd.sx; cn.scale.y = cd.sy; }
@@ -537,7 +526,7 @@
         }
         break;
       case 'POSITION_SYNC':
-        log('📍 Received POSITION_SYNC, items:', msg.payload ? msg.payload.length : 0);
+        if (window.__nbSyncDebug) log('📍 Received POSITION_SYNC, items:', msg.payload ? msg.payload.length : 0);
         applyPositionSync(msg.payload);
         break;
       case 'STATE_HISTORY':
@@ -560,19 +549,45 @@
   // Command history for late-joining viewers
   var _commandHistory = [];
 
+  function recordCommandHistory(action, payload) {
+    if (action !== 'EXECUTE_CMD' && action !== 'DISPATCH_ACTION') return;
+    // Skip commands carrying PIXI object refs — they depend on transient scene paths and are
+    // followed by POSITION_SYNC bursts instead of being safe to replay for late joiners.
+    var hasPixiRef = false;
+    if (payload && payload.args) {
+      for (var h = 0; h < payload.args.length; h++) {
+        if (payload.args[h] && payload.args[h].__pixiRef) { hasPixiRef = true; break; }
+      }
+    }
+    if (!hasPixiRef) {
+      _commandHistory.push({
+        type: MSG_PREFIX, action: action, payload: payload || {},
+        timestamp: Date.now(), userId: _userId, version: BRIDGE_VERSION
+      });
+    }
+  }
+
+  function startPositionSyncLoop() {
+    if (_positionSyncTimer) return;
+    _positionSyncTimer = setInterval(function () {
+      if (_isPresenter) sendPositionSync();
+    }, 1000);
+  }
+
+  function sendStateSnapshot() {
+    if (!_isPresenter) return;
+    if (_commandHistory.length > 0) {
+      _sendToParentBase('STATE_HISTORY', _commandHistory);
+    }
+    [100, 500, 1200, 2500].forEach(function (delay) {
+      setTimeout(function () { sendPositionSync(); }, delay);
+    });
+  }
+
   // Broadcast to BC + WebRTC
   function broadcastEvent(action, payload) {
     var msg = { type: MSG_PREFIX, action: action, payload: payload || {}, timestamp: Date.now(), userId: _userId };
-    // Record non-canvas commands for late joiners (skip __pixiRef interactions)
-    if (action === 'EXECUTE_CMD' || action === 'DISPATCH_ACTION') {
-      var hasPixiRef = false;
-      if (payload && payload.args) {
-        for (var h = 0; h < payload.args.length; h++) {
-          if (payload.args[h] && payload.args[h].__pixiRef) { hasPixiRef = true; break; }
-        }
-      }
-      if (!hasPixiRef) _commandHistory.push(msg);
-    }
+    // (History recording moved to recordCommandHistory via _sendToParentBase — works in SDK mode too.)
     if (_bc) { try { _bc.postMessage(msg); } catch (e) {} }
     for (var i = 0; i < _peerConns.length; i++) {
       try { if (_peerConns[i].open) _peerConns[i].send(JSON.stringify(msg)); } catch (e) {}
@@ -663,12 +678,7 @@
       broadcastEvent(action, payload);
     };
     log('✓ Presenter mode — broadcasting enabled');
-    // Periodic position sync every 1s
-    setInterval(function () {
-      if (_isPresenter) {
-        sendPositionSync();
-      }
-    }, 1000);
+    startPositionSyncLoop();
   }
 
   // Block all user interactions on viewer (student)
@@ -749,7 +759,17 @@
         _isPresenter = msg.payload.role === 'presenter';
         _userId = msg.payload.userId || _userId;
         log('Role:', _isPresenter ? 'PRESENTER' : 'VIEWER');
-        if (_isPresenter) startCanvasCapture();
+        if (_isPresenter) {
+          startCanvasCapture();
+          startPositionSyncLoop();
+          sendStateSnapshot();
+        } else {
+          if (_positionSyncTimer) {
+            clearInterval(_positionSyncTimer);
+            _positionSyncTimer = null;
+          }
+          lockViewerUI();
+        }
         break;
       case 'CANVAS_EVENT':
         if (!_isPresenter) { _isSyncing = true; replayCanvasEvent(msg.payload); _isSyncing = false; }
@@ -759,6 +779,15 @@
         break;
       case 'DISPATCH_ACTION':
         if (!_isPresenter) replayDispatch(msg.payload);
+        break;
+      case 'POSITION_SYNC':
+        if (!_isPresenter) applyPositionSync(msg.payload);
+        break;
+      case 'STATE_HISTORY':
+        if (!_isPresenter) handleSyncMessage(msg);
+        break;
+      case 'REQUEST_STATE':
+        if (_isPresenter) sendStateSnapshot();
         break;
     }
   });
