@@ -5,24 +5,45 @@
   <base href="/" />
 
   <script>
-    /* [SAFARI IFRAME FIX] Recover from webpack ChunkLoadError. Safari aborts async chunks in a
-       cross-origin iframe (ITP / cache partitioning) -> ChunkLoadError. Reload once per session;
-       auto-reset the guard after a clean load so a later navigation can still recover. */
+    /* [TOUCH ASSET FIX] Force full-size Pixi assets on touch devices. The physics engine sets
+       PIXI.settings.IMAGE_SCALE="@0.5x" on small/touch (physics-libs.min.js: `f && (...="@0.5x")`),
+       but this build ships only full-size PNGs, so @0.5x asset paths 404 and dropped equipment
+       silently fails to render. Intercept the setter -> null so the engine loads full-size assets. */
     (function () {
-      function isChunkErr(m) {
-        return /ChunkLoadError|Loading chunk\s|Importing a module script failed|error loading dynamically imported module/i.test(m || "");
+      function patchPixiImageScale(pixi) {
+        if (!pixi || !pixi.settings || pixi.settings.__nbUseFullSizeAssets) return;
+        try {
+          var imageScale = pixi.settings.IMAGE_SCALE || null;
+          Object.defineProperty(pixi.settings, 'IMAGE_SCALE', {
+            configurable: true,
+            get: function () { return imageScale; },
+            set: function (value) { imageScale = value === '@0.5x' ? null : value; },
+          });
+          pixi.settings.IMAGE_SCALE = null;
+          pixi.settings.__nbUseFullSizeAssets = true;
+        } catch (error) {
+          try { pixi.settings.IMAGE_SCALE = null; pixi.settings.__nbUseFullSizeAssets = true; } catch (e) {}
+        }
       }
-      function recover(m) {
-        if (!isChunkErr(m)) return;
-        try { if (sessionStorage.getItem("__nbChunkReloaded")) return; sessionStorage.setItem("__nbChunkReloaded", "1"); } catch (e) {}
-        try { if (window.caches && caches.keys) caches.keys().then(function (ks) { ks.forEach(function (n) { caches.delete(n); }); }); } catch (e) {}
-        location.reload();
-      }
-      window.addEventListener("error", function (e) { recover(e && e.message); });
-      window.addEventListener("unhandledrejection", function (e) { var r = e && e.reason; recover(r && (r.message || String(r))); });
-      window.addEventListener("load", function () { setTimeout(function () { try { sessionStorage.removeItem("__nbChunkReloaded"); } catch (e) {} }, 5000); });
+      patchPixiImageScale(window.PIXI);
+      var pixiValue = window.PIXI;
+      try {
+        Object.defineProperty(window, 'PIXI', {
+          configurable: true,
+          get: function () { return pixiValue; },
+          set: function (value) { pixiValue = value; patchPixiImageScale(value); },
+        });
+      } catch (error) {}
+      var attempts = 0;
+      var timer = setInterval(function () {
+        attempts += 1;
+        patchPixiImageScale(window.PIXI);
+        if ((window.PIXI && window.PIXI.settings && window.PIXI.settings.__nbUseFullSizeAssets) || attempts > 1000) clearInterval(timer);
+      }, 10);
     })();
   </script>
+
+  
 
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -580,7 +601,6 @@
     }
   </style>
 
-
   <link rel="stylesheet" href="/umi.adea85be.css" />
   <script>
     // routerBase = "/" means umi reads full path from root
@@ -703,7 +723,6 @@
         }
       }
 
-
       document.addEventListener('click', function (e) {
         var el = e.target.closest('.curImgBg___c-Bqf, .cutImg___2DHZj, .iconItem___6odCt');
         if (el && el.closest('.curImgBg___c-Bqf, .hoverShell___1ccfI')) {
@@ -740,7 +759,6 @@
       setTimeout(injectLogo, 5000);
       new MutationObserver(injectLogo).observe(document.body, { childList: true, subtree: true });
     })();
-
 
     (function () {
       // === Lock title + favicon ===
