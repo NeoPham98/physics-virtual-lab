@@ -1,11 +1,16 @@
 /**
- * NB Sync Bridge v12.3-PHY — SMART HYBRID + STANDALONE (WebRTC + BroadcastChannel)
- * Adapted for Physics Virtual Lab
- * 
+ * NB Sync Bridge v13.0 — SNAPSHOT-AUTHORITATIVE + SMART HYBRID + STANDALONE
+ * Works for both Physics and Chemistry labs (findMainContainer auto-detects the engine).
+ *
  * Modes:
  * 1. SDK Mode: Bridge inside iframe, SDK parent manages roles & relay via postMessage
  * 2. Standalone Mode: URL params ?syncRoom=X&syncRole=presenter|viewer
  *    → Auto-connects via BroadcastChannel (same-device) + PeerJS WebRTC (cross-device)
+ *
+ * v13: adds a STATE_SNAPSHOT layer — the presenter's full engine state
+ * (NBCommand.GET_DATA) is the single source of truth. Viewers RESTORE_DATA whenever the
+ * presenter's state hash changes (monotonic seq), so any drift left by the event-replay
+ * layers (which remain, for low-latency smoothness) self-heals within one heartbeat.
  */
 (function () {
   'use strict';
@@ -13,7 +18,7 @@
   if (window.__nbSyncBridgeLoaded) return;
   window.__nbSyncBridgeLoaded = true;
 
-  var BRIDGE_VERSION = '12.3.0';
+  var BRIDGE_VERSION = '13.0.0';
   var MSG_PREFIX = 'NB_SYNC';
   var MAX_INIT_WAIT = 30000;
 
@@ -50,6 +55,22 @@
   var _peer = null;
   var _peerConns = [];
   var _positionSyncTimer = null;
+
+  // v13 snapshot-authority state
+  var _snapSeq = 0;            // presenter: monotonic snapshot sequence
+  var _lastSentHash = '';      // presenter: dedupe — only send when state actually changed
+  var _snapDebounce = null;    // presenter: debounce timer after mutations
+  var _snapTick = 0;           // presenter: heartbeat divider (position loop runs at 1s)
+  var _lastAppliedSeq = 0;     // viewer: ignore stale/duplicate snapshots
+  var _lastAppliedHash = '';   // viewer: skip RESTORE when already at presenter's state
+  var SNAP_DEBOUNCE_MS = 500;
+  var SNAP_HEARTBEAT_TICKS = 3; // every 3s (3 × 1s position ticks)
+  // Viewer = snapshot-authoritative: ignore the event-replay layers (CANVAS_EVENT / EXECUTE_CMD /
+  // DISPATCH_ACTION). Those replays add equipment/state a beat before the next STATE_SNAPSHOT also
+  // carries it → transient DUPLICATE equipment + extra work (lag). The viewer instead rebuilds only
+  // from STATE_SNAPSHOT (full setData/RESTORE = self-dedupes) plus POSITION_SYNC (smooth drag).
+  // Trade-off (accepted — "đúng tuyệt đối"): adds/deletes appear ~1 snapshot debounce later.
+  var VIEWER_SNAPSHOT_ONLY = true;
 
   // ═══════════════════════════════════════════════════════
   // LOGGING
@@ -141,6 +162,7 @@
       // Double sync: fast + delayed (let PIXI finish animation)
       setTimeout(function () { sendPositionSync(); }, 200);
       setTimeout(function () { sendPositionSync(); }, 600);
+      scheduleSnapshot(); // v13: authoritative state follows every completed gesture
     }, { capture: true, passive: true });
 
     document.addEventListener('pointercancel', function () { dragging = false; }, { capture: true, passive: true });
@@ -176,6 +198,7 @@
   }
 
   function replayCanvasEvent(p) {
+    if (VIEWER_SNAPSHOT_ONLY) return; // viewer follows STATE_SNAPSHOT, not pointer replay
     if (!p || !p.eventType) return;
     var canvas = _canvasEl || document.querySelector('canvas');
     if (!canvas) return;
@@ -238,19 +261,28 @@
   }
 
   function findMainContainer() {
-    // Auto-detect: physicalMain, physicsMain, chemicalMain, or any window.*Main with execute
-    var candidates = ['physicalMain', 'physicsMain', 'chemicalMain'];
+    // Known globals. Runtime-verified: physics exposes `__main` (lowercase, NOT *Main);
+    // chemistry exposes its container via the getLabMain() accessor once the lab is live.
+    var candidates = ['__main', 'physicalMain', 'physicsMain', 'chemicalMain'];
     for (var c = 0; c < candidates.length; c++) {
-      if (window[candidates[c]] && typeof window[candidates[c]].execute === 'function') return window[candidates[c]];
+      var v = window[candidates[c]];
+      if (v && typeof v === 'object' && typeof v.execute === 'function') return v;
     }
-    // Search all window properties for a PIXI-like main container
+    // Chemistry SDK accessor — returns the container only after the engine is instantiated.
+    if (typeof window.getLabMain === 'function') {
+      try { var m = window.getLabMain(); if (m && typeof m.execute === 'function') return m; } catch (e) {}
+    }
+    // Fallback: any *main container (case-insensitive) with execute + children.
     var keys = Object.keys(window);
     for (var k = 0; k < keys.length; k++) {
       var key = keys[k];
-      if (key.endsWith('Main') && window[key] && typeof window[key].execute === 'function' && window[key].children) {
-        log('🔍 Auto-detected main container:', key);
-        return window[key];
-      }
+      try {
+        var w = window[key];
+        if (/main$/i.test(key) && w && typeof w === 'object' && typeof w.execute === 'function' && w.children) {
+          log('🔍 Auto-detected main container:', key);
+          return w;
+        }
+      } catch (e) {}
     }
     return null;
   }
@@ -277,6 +309,7 @@
         if (path) {
           sendToParent('EXECUTE_CMD', { cmdName: 'DELETE_EQUIPMENT', isDelete: true, identifier: { _path: path } });
           log('⚡ DELETE (path:', JSON.stringify(path), ')');
+          scheduleSnapshot();
         }
         return result;
       }
@@ -293,6 +326,7 @@
         }
         log('⚡', cmdName);
         setTimeout(function () { sendPositionSync(); }, 100);
+        scheduleSnapshot();
       }
       // [DISABLED v12.3] Relaying NON-whitelisted commands serialized plain-object args that the
       // viewer's engine then treats as live PIXI display objects → "e.on is not a function" on
@@ -305,6 +339,7 @@
   }
 
   function replayExecute(payload) {
+    if (VIEWER_SNAPSHOT_ONLY) return; // viewer follows STATE_SNAPSHOT, not command replay
     if (!payload) return;
     var cm = findMainContainer();
     if (!cm || !_origExecute) return;
@@ -355,6 +390,84 @@
         }
       }
     } catch (e) { log('❌ Replay error:', e.message); }
+    _isSyncing = false;
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // v13 — STATE SNAPSHOT (single source of truth)
+  // Presenter serializes the FULL engine state (NBCommand.GET_DATA) and broadcasts it with a
+  // monotonic seq + content hash. Viewers RESTORE_DATA whenever the presenter hash changes.
+  // Event-replay layers stay for smoothness; any divergence they leave self-heals here.
+  // ═══════════════════════════════════════════════════════
+  function djb2(str) {
+    var h = 5381;
+    for (var i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0;
+    return (h >>> 0).toString(36);
+  }
+
+  // Normalize an engine payload to a non-empty serialized string, or null.
+  function serializeState(d) {
+    if (d == null) return null;
+    var s = typeof d === 'string' ? d : JSON.stringify(d);
+    if (!s || s === '{}' || s === 'null' || s === '[]') return null;
+    return s;
+  }
+
+  // Lab-agnostic snapshot read. Chemistry exposes NBCommand + execute(GET_DATA);
+  // physics has no NBCommand and serializes via cm.getData(). Prefer the NBCommand
+  // path when present (chemistry's canonical save format), else the method path.
+  function getStateData() {
+    var cm = findMainContainer();
+    if (!cm) return null;
+    var NB = window.NBCommand;
+    if (NB && 'GET_DATA' in NB && typeof cm.execute === 'function') {
+      try { var s = serializeState(cm.execute(NB.GET_DATA)); if (s) return s; } catch (e) {}
+    }
+    if (typeof cm.getData === 'function') {
+      try { var s2 = serializeState(cm.getData()); if (s2) return s2; } catch (e) {}
+    }
+    return null;
+  }
+
+  function sendSnapshotNow(force) {
+    if (!_isPresenter) return;
+    var data = getStateData();
+    if (data == null) return; // engine not ready / no GET_DATA on this lab build
+    var h = djb2(data);
+    if (!force && h === _lastSentHash) return; // idle — nothing changed, no traffic
+    _lastSentHash = h;
+    _snapSeq++;
+    sendToParent('STATE_SNAPSHOT', { seq: _snapSeq, hash: h, data: data, size: data.length });
+    log('📸 Snapshot #' + _snapSeq, '(' + data.length + 'B, ' + h + ')');
+  }
+
+  function scheduleSnapshot() {
+    if (!_isPresenter) return;
+    if (_snapDebounce) clearTimeout(_snapDebounce);
+    _snapDebounce = setTimeout(function () {
+      _snapDebounce = null;
+      sendSnapshotNow(false);
+    }, SNAP_DEBOUNCE_MS);
+  }
+
+  function applyStateSnapshot(p) {
+    if (_isPresenter || !p || typeof p.data !== 'string' || !p.data) return;
+    if (typeof p.seq === 'number' && p.seq <= _lastAppliedSeq) return; // stale/dup
+    if (typeof p.seq === 'number') _lastAppliedSeq = p.seq;
+    if (p.hash && p.hash === _lastAppliedHash) return; // already at this state
+    var cm = findMainContainer();
+    if (!cm) return;
+    var NB = window.NBCommand;
+    _isSyncing = true;
+    try {
+      if (NB && 'RESTORE_DATA' in NB && typeof cm.execute === 'function') {
+        cm.execute(NB.RESTORE_DATA, p.data);   // chemistry
+      } else if (typeof cm.setData === 'function') {
+        cm.setData(p.data);                    // physics
+      } else { _isSyncing = false; return; }
+      _lastAppliedHash = p.hash || djb2(p.data);
+      log('📥 Snapshot applied #' + p.seq, '(' + p.data.length + 'B)');
+    } catch (e) { log('❌ Snapshot restore error:', e.message); }
     _isSyncing = false;
   }
 
@@ -458,7 +571,7 @@
           for (var i = 0; i < RELAY_DVA.length; i++) { if (type.indexOf(RELAY_DVA[i]) >= 0) { relay = true; break; } }
           if (relay) {
             var cloned = safeClone({ type: action.type, payload: action.payload });
-            if (cloned) { sendToParent('DISPATCH_ACTION', cloned); log('📦', type); }
+            if (cloned) { sendToParent('DISPATCH_ACTION', cloned); log('📦', type); scheduleSnapshot(); }
           }
         }
       }
@@ -468,6 +581,7 @@
     return true;
   }
   function replayDispatch(actionData) {
+    if (VIEWER_SNAPSHOT_ONLY) return; // viewer follows STATE_SNAPSHOT, not dva-action replay
     if (!actionData || !actionData.type) return;
     var store = findDvaStore();
     if (!store || !_origDispatch) return;
@@ -529,6 +643,9 @@
         if (window.__nbSyncDebug) log('📍 Received POSITION_SYNC, items:', msg.payload ? msg.payload.length : 0);
         applyPositionSync(msg.payload);
         break;
+      case 'STATE_SNAPSHOT':
+        applyStateSnapshot(msg.payload);
+        break;
       case 'STATE_HISTORY':
         // Late-join: replay all past commands
         if (Array.isArray(msg.payload)) {
@@ -570,18 +687,30 @@
   function startPositionSyncLoop() {
     if (_positionSyncTimer) return;
     _positionSyncTimer = setInterval(function () {
-      if (_isPresenter) sendPositionSync();
+      if (!_isPresenter) return;
+      sendPositionSync();
+      // v13 heartbeat: every SNAP_HEARTBEAT_TICKS seconds re-check full state; hash-dedupe in
+      // sendSnapshotNow keeps an idle lab silent, while any missed mutation (dropped event,
+      // failed replay on a viewer) is corrected on the next beat.
+      _snapTick++;
+      if (_snapTick >= SNAP_HEARTBEAT_TICKS) {
+        _snapTick = 0;
+        sendSnapshotNow(false);
+      }
     }, 1000);
   }
 
   function sendStateSnapshot() {
     if (!_isPresenter) return;
+    // Legacy path first so old-bridge viewers still get something usable…
     if (_commandHistory.length > 0) {
       _sendToParentBase('STATE_HISTORY', _commandHistory);
     }
     [100, 500, 1200, 2500].forEach(function (delay) {
       setTimeout(function () { sendPositionSync(); }, delay);
     });
+    // …then the authoritative snapshot (forced — late-joiner needs it even if hash unchanged).
+    setTimeout(function () { sendSnapshotNow(true); }, 300);
   }
 
   // Broadcast to BC + WebRTC
@@ -613,6 +742,8 @@
         [300, 800, 1500, 3000].forEach(function(delay) {
           setTimeout(function () { sendPositionSync(); }, delay);
         });
+        // v13: authoritative snapshot for the new peer
+        setTimeout(function () { sendSnapshotNow(true); }, 500);
       }
     });
     conn.on('data', function (data) {
@@ -782,6 +913,9 @@
         break;
       case 'POSITION_SYNC':
         if (!_isPresenter) applyPositionSync(msg.payload);
+        break;
+      case 'STATE_SNAPSHOT':
+        if (!_isPresenter) applyStateSnapshot(msg.payload);
         break;
       case 'STATE_HISTORY':
         if (!_isPresenter) handleSyncMessage(msg);
